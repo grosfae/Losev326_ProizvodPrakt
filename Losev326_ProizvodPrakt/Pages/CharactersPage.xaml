@@ -17,15 +17,19 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Height="30" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
-            <Button x:Name="BtnView" Style="{DynamicResource BTS}" Width="100" Content="Просмотреть" FontSize="13"/>
+        <StackPanel Grid.Row="0" Height="35" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
+            <Button x:Name="BtnView" Style="{DynamicResource BTS}" Width="100" Content="Просмотреть" FontSize="13" Margin="500 0 0 0"/>
                 <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13"/>
                 <Button x:Name="BtnEdit" Style="{DynamicResource BTS}" Width="100" Content="Изменить" FontSize="13"/>
-            <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Удалить" FontSize="13"/>
-        </StackPanel>
+                <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Удалить" FontSize="13"/>
+            </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="Black">
-            <TextBlock Text="Поиск" Foreground="White" />
+            <TextBlock Text="Поиск" Foreground="White"/>
             <TextBox x:Name="TbSearch" Width="160" TextChanged="TbSearch_TextChanged" Height="20"/>
+            <TextBlock Text="Тип персонажа" Foreground="White"/>
+            <ComboBox x:Name="CbTypeArticle" SelectedItem="{Binding TypeCharacter}" DisplayMemberPath="Name" Width="160"/>
+            <TextBlock Text="Скорость передвижения" Foreground="White"/>
+            <ComboBox x:Name="CbMoveSpeed" SelectedItem="{Binding MoveSpeed}" DisplayMemberPath="Value" Width="160"/>
 
         </StackPanel>
         <ListView x:Name="LvEmployees" Grid.Column="1" Grid.Row="1">
