@@ -1,0 +1,46 @@
+﻿<Page x:Class="Losev326_ProizvodPrakt.Pages.CharactersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Losev326_ProizvodPrakt.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="CharactersPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="39*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Height="30" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
+            <Button x:Name="BtnView" Style="{DynamicResource BTS}" Width="100" Content="Просмотреть" FontSize="13"/>
+                <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13"/>
+                <Button x:Name="BtnEdit" Style="{DynamicResource BTS}" Width="100" Content="Изменить" FontSize="13"/>
+            <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Удалить" FontSize="13"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="Black">
+            <TextBlock Text="Поиск" Foreground="White" />
+            <TextBox x:Name="TbSearch" Width="160" TextChanged="TbSearch_TextChanged" Height="20"/>
+
+        </StackPanel>
+        <ListView x:Name="LvEmployees" Grid.Column="1" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding LastName, StringFormat='Фамилия: {0}'}"/>
+                        <TextBlock Text="{Binding FirstName, StringFormat='Имя: {0}'}"/>
+                        <TextBlock Text="{Binding Salary, StringFormat='Зарплата: {0}'}"/>
+                        <TextBlock Text="{Binding Post.Name, StringFormat='Должность: {0}'}"/>
+                        <TextBlock Text="{Binding Group.Name, StringFormat='Группа: {0}'}"/>
+                        <Image Source="{Binding Image}" Width="200" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

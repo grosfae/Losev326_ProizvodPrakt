@@ -17,20 +17,11 @@
             <Setter Property="Margin" Value="5"></Setter>
         </Style>
         <Style TargetType="Button" x:Key="BTS">
-            <Setter Property="Background" Value="#A4A3FF"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontFamily" Value="Resources/#Museo Cyrl 500"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
-                    <Setter Property="RenderTransform">
-                        <Setter.Value>
-                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
         </Style>
         <Style TargetType="Button" x:Key="Angle">
             <Setter Property="Template">

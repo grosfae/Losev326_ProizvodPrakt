@@ -5,21 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b18be0a00fdc41278cc9d74ed98ac4c6" Name="Diagram1">
-        <EntityTypeShape EntityType="DbdWikiModel.Article" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbdWikiModel.Character" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbdWikiModel.Perk" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbdWikiModel.Power" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbdWikiModel.Role" Width="1.5" PointX="5.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbdWikiModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbdWikiModel.TypeCharacter" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbdWikiModel.TypePerk" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbdWikiModel.User" Width="1.5" PointX="8" PointY="5.875" IsExpanded="true" />
-        <AssociationConnector Association="DbdWikiModel.FK_Article_Character" ManuallyRouted="false" />
-        <AssociationConnector Association="DbdWikiModel.FK_Character_Perk" ManuallyRouted="false" />
-        <AssociationConnector Association="DbdWikiModel.FK_Character_Power" ManuallyRouted="false" />
-        <AssociationConnector Association="DbdWikiModel.FK_Character_TypeCharacter" ManuallyRouted="false" />
-        <AssociationConnector Association="DbdWikiModel.FK_Perk_TypePerk" ManuallyRouted="false" />
-        <AssociationConnector Association="DbdWikiModel.FK_User_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DbdWikiModel.Article" Width="1.5" PointX="7.5" PointY="1.625" />
+        <EntityTypeShape EntityType="DbdWikiModel.Character" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="DbdWikiModel.Perk" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="DbdWikiModel.Power" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="DbdWikiModel.Role" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="DbdWikiModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DbdWikiModel.TypeCharacter" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="DbdWikiModel.TypePerk" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="DbdWikiModel.User" Width="1.5" PointX="5.25" PointY="11.25" />
+        <AssociationConnector Association="DbdWikiModel.FK_Article_Character" />
+        <AssociationConnector Association="DbdWikiModel.FK_Article_User" />
+        <AssociationConnector Association="DbdWikiModel.FK_Character_Perk" />
+        <AssociationConnector Association="DbdWikiModel.FK_Character_Power" />
+        <AssociationConnector Association="DbdWikiModel.FK_Character_TypeCharacter" />
+        <AssociationConnector Association="DbdWikiModel.FK_Perk_TypePerk" />
+        <AssociationConnector Association="DbdWikiModel.FK_User_Role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

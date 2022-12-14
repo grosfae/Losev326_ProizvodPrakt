@@ -23,6 +23,43 @@ namespace Losev326_ProizvodPrakt.Pages
         public LoginPage()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.Login != null)
+                TbLogin.Text = Properties.Settings.Default.Login;
+            if (Properties.Settings.Default.Password != null)
+                PbPassword.Password = Properties.Settings.Default.Password;
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var user = App.DB.User.FirstOrDefault(x => x.Login == TbLogin.Text);
+            if (user == null)
+            {
+                MessageBox.Show("Логин неверный");
+                return;
+            }
+            if (user.Password != PbPassword.Password)
+            {
+                MessageBox.Show("Пароль неверный");
+                return;
+            }
+            if (SaveCb.IsChecked == true)
+            {
+                Properties.Settings.Default.Login = TbLogin.Text;
+                Properties.Settings.Default.Password = PbPassword.Password;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.Login = null;
+                Properties.Settings.Default.Password = null;
+                Properties.Settings.Default.Save();
+            }
+            App.LoggedUser = user;
+            NavigationService.Navigate(new MainPage());
+        }
+        private void BtnReg_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegPage());
         }
     }
 }

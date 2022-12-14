@@ -17,7 +17,7 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Width="350" Grid.Row="1">
             <TextBlock Text="Логин"></TextBlock>
-            <TextBox x:Name="TbPhone" Height="25" VerticalContentAlignment="Center"></TextBox>
+            <TextBox x:Name="TbLogin" Height="25" VerticalContentAlignment="Center"></TextBox>
             <TextBlock Text="Пароль"></TextBlock>
             <PasswordBox x:Name="PbPassword" Height="25" VerticalContentAlignment="Center"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="135">
@@ -26,7 +26,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="BtnLogin" Click="BtnLogin_Click" Style="{StaticResource Angle}" Background="Black" Foreground="White" Height="25" Width="125" FontSize="16" Content="Вход" Margin="0 0 20 0"></Button>
-                <Button x:Name="BtnReg" Click="BtnLogin_Click" Style="{StaticResource Angle}" Background="Black" Foreground="White" Height="25" Width="125" FontSize="16" Content="Регистрация"></Button>
+                <Button x:Name="BtnReg" Click="BtnReg_Click" Style="{StaticResource Angle}" Background="Black" Foreground="White" Height="25" Width="125" FontSize="16" Content="Регистрация"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>
