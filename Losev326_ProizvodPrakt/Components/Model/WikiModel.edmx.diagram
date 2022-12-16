@@ -5,18 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b18be0a00fdc41278cc9d74ed98ac4c6" Name="Diagram1">
-        <EntityTypeShape EntityType="DbdWikiModel.Article" Width="1.5" PointX="3" PointY="7.5" />
-        <EntityTypeShape EntityType="DbdWikiModel.Character" Width="1.5" PointX="6" PointY="6.75" />
-        <EntityTypeShape EntityType="DbdWikiModel.Map" Width="1.5" PointX="3" PointY="14.75" />
-        <EntityTypeShape EntityType="DbdWikiModel.MoveSpeed" Width="1.5" PointX="3.75" PointY="4.625" />
-        <EntityTypeShape EntityType="DbdWikiModel.Perk" Width="1.5" PointX="11.25" PointY="7.125" />
-        <EntityTypeShape EntityType="DbdWikiModel.Power" Width="1.5" PointX="8.25" PointY="7" />
-        <EntityTypeShape EntityType="DbdWikiModel.Role" Width="1.5" PointX="1.5" PointY="0.75" />
-        <EntityTypeShape EntityType="DbdWikiModel.sysdiagrams" Width="1.5" PointX="3.75" PointY="1.75" />
-        <EntityTypeShape EntityType="DbdWikiModel.TypeArticle" Width="1.5" PointX="0.75" PointY="7.375" />
-        <EntityTypeShape EntityType="DbdWikiModel.TypeCharacter" Width="1.5" PointX="3.75" PointY="10.875" />
-        <EntityTypeShape EntityType="DbdWikiModel.TypePerk" Width="1.5" PointX="9" PointY="3.75" />
-        <EntityTypeShape EntityType="DbdWikiModel.User" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="DbdWikiModel.Article" Width="1.5" PointX="6" PointY="6.75" />
+        <EntityTypeShape EntityType="DbdWikiModel.Character" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="DbdWikiModel.Map" Width="1.5" PointX="3" PointY="13.875" />
+        <EntityTypeShape EntityType="DbdWikiModel.MoveSpeed" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DbdWikiModel.Perk" Width="1.5" PointX="8.25" PointY="6.25" />
+        <EntityTypeShape EntityType="DbdWikiModel.Power" Width="1.5" PointX="5.25" PointY="2" />
+        <EntityTypeShape EntityType="DbdWikiModel.Role" Width="1.5" PointX="1.5" PointY="10.875" />
+        <EntityTypeShape EntityType="DbdWikiModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbdWikiModel.TypeArticle" Width="1.5" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="DbdWikiModel.TypeCharacter" Width="1.5" PointX="0.75" PointY="14.125" />
+        <EntityTypeShape EntityType="DbdWikiModel.TypePerk" Width="1.5" PointX="6" PointY="9.875" />
+        <EntityTypeShape EntityType="DbdWikiModel.TypePower" Width="1.5" PointX="3" PointY="2.875" />
+        <EntityTypeShape EntityType="DbdWikiModel.User" Width="1.5" PointX="3.75" PointY="10.375" />
         <AssociationConnector Association="DbdWikiModel.FK_Article_TypeArticle" />
         <AssociationConnector Association="DbdWikiModel.FK_Article_User" />
         <AssociationConnector Association="DbdWikiModel.FK_Character_MoveSpeed" />
@@ -28,6 +29,7 @@
         <AssociationConnector Association="DbdWikiModel.FK_Perk_TypeArticle" />
         <AssociationConnector Association="DbdWikiModel.FK_Perk_TypePerk" />
         <AssociationConnector Association="DbdWikiModel.FK_Power_TypeArticle" />
+        <AssociationConnector Association="DbdWikiModel.FK_Power_TypePower" />
         <AssociationConnector Association="DbdWikiModel.FK_User_Role" />
       </Diagram>
     </edmx:Diagrams>

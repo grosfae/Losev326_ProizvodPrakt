@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Losev326_ProizvodPrakt.Components.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace Losev326_ProizvodPrakt.Pages
     /// </summary>
     public partial class PowerViewPage : Page
     {
-        public PowerViewPage()
+        Power contextPower;
+        public PowerViewPage(Power power)
         {
             InitializeComponent();
+            contextPower = power;
+            DataContext = contextPower;
+        }
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

@@ -27,7 +27,8 @@ namespace Losev326_ProizvodPrakt.Pages
         public PowerAddEditPage(Power power)
         {
             InitializeComponent();
-            CbCharacter.ItemsSource = App.DB.Character.ToList();
+            CbCharacter.ItemsSource = App.DB.Character.Where(x => x.TypeCharacterId == 1).ToList();
+            CbTypePower.ItemsSource = App.DB.TypePower.ToList();
             contextPower = power;
             DataContext = contextPower;
 
@@ -43,9 +44,9 @@ namespace Losev326_ProizvodPrakt.Pages
             {
                 errorMessage += "Введите описание\n";
             }
-            if (string.IsNullOrWhiteSpace(contextPower.TypePower))
+            if (contextPower.TypePower == null)
             {
-                errorMessage += "Введите тип способности\n";
+                errorMessage += "Выберите тип способности\n";
             }
             if (string.IsNullOrWhiteSpace(contextPower.Count))
             {

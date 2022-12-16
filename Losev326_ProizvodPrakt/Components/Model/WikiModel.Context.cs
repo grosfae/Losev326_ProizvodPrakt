@@ -36,6 +36,7 @@ namespace Losev326_ProizvodPrakt.Components.Model
         public virtual DbSet<TypeArticle> TypeArticle { get; set; }
         public virtual DbSet<TypeCharacter> TypeCharacter { get; set; }
         public virtual DbSet<TypePerk> TypePerk { get; set; }
+        public virtual DbSet<TypePower> TypePower { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

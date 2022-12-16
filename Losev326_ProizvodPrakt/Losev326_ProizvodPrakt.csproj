@@ -105,6 +105,9 @@
     <Compile Include="Components\Model\TypePerk.cs">
       <DependentUpon>WikiModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\Model\TypePower.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Components\Model\User.cs">
       <DependentUpon>WikiModel.tt</DependentUpon>
     </Compile>

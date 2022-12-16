@@ -39,7 +39,7 @@
                         <Image Source="{Binding Image}" Width="150" Height="150" />
                         <TextBlock Text="{Binding Name, StringFormat='Способность: {0}'}" Foreground="White"/>
                         <TextBlock Text="{Binding Character.Name, StringFormat='Владелец: {0}'}" Foreground="White"/>
-                        <TextBlock Text="{Binding TypePower, StringFormat='Тип: {0}'}" Foreground="White"/>
+                        <TextBlock Text="{Binding TypePower.Name, StringFormat='Тип: {0}'}" Foreground="White"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

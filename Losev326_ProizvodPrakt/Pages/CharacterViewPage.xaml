@@ -18,27 +18,35 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
-            <Button x:Name="BtnCancel" Style="{DynamicResource BTS}" Width="100" Content="Отмена" FontSize="13" Click="BtnCancel_Click" Margin="800 0 0 0"/>
+            <Button x:Name="BtnCancel" Style="{DynamicResource BTS}" Width="100" Content="Назад" FontSize="13" Click="BtnCancel_Click" Margin="800 0 0 0"/>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" >
-            <TextBlock Text="{Binding Name}" FontSize="20" Margin="5 0 0 20" Foreground="White"/>
+            <TextBlock Text="{Binding Name}" FontSize="26" Margin="5 0 0 10" Foreground="White"/>
             <TextBlock Text="Описание" FontSize="18" Foreground="White"/>
-            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Height="auto" Foreground="White"/>
+            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Height="auto" Foreground="White" FontSize="15"/>
             <TextBlock Text="История" FontSize="18" Foreground="White"/>
-            <TextBlock Text="{Binding History}" TextWrapping="Wrap" Height="auto" Foreground="White"/>
+            <TextBlock Text="{Binding History}" TextWrapping="Wrap" Height="auto" Foreground="White" FontSize="15"/>
             <StackPanel x:Name="StPower">
-            <TextBlock Text="Сила" FontSize="18" Foreground="White"/>
-            <TextBlock Text="{Binding Power.Name}" FontSize="12" Foreground="White"/>
-            <StackPanel>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{Binding Power.Image}" Width="128" Height="128"/>
-                    <TextBlock TextWrapping="Wrap" Text="{Binding Power.Discription}" Foreground="White" Grid.Column="1"/>
-                </Grid>
-            </StackPanel>
+                <TextBlock Text="Сила" FontSize="18" Foreground="White"/>
+                <StackPanel>
+                    <ListView x:Name="LvPower" d:ItemsSource="{d:SampleData ItemCount=1}" Background="Transparent" BorderBrush="Transparent">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Width="550">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="157*"/>
+                                        <ColumnDefinition Width="343*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding Image}" Width="130" Height="130" Grid.Column="0"/>
+                                    <StackPanel Grid.Column="1">
+                                    <TextBlock Text="{Binding Name}" Foreground="White" Height="auto" FontSize="15"/>
+                                        <TextBlock Text="{Binding Description}" Foreground="White" Height="auto" FontSize="15" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
             </StackPanel>
             <TextBlock Text="Навыки" FontSize="18" Foreground="White"/>
             <StackPanel>
@@ -51,8 +59,8 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0 0 20 0">
-                                <Image Source="{Binding Perk.Image}" Width="130" Height="130" />
-                                <TextBlock Text="{Binding Perk.Name}" HorizontalAlignment="Center" Foreground="White"/>
+                                <Image Source="{Binding Image}" Width="130" Height="130" />
+                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Foreground="White"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

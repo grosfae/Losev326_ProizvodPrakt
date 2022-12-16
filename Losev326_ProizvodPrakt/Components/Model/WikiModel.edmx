@@ -62,9 +62,9 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
-          <Property Name="TypePower" Type="varchar" MaxLength="100" />
+          <Property Name="TypePowerId" Type="int" Nullable="false" />
           <Property Name="Count" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Range" Type="varchar" MaxLength="100" />
+          <Property Name="Range" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Image" Type="image" Nullable="false" />
           <Property Name="CharacterId" Type="int" Nullable="false" />
           <Property Name="TypeArticleId" Type="int" Nullable="false" />
@@ -106,6 +106,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypePower">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -251,6 +258,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Power_TypePower">
+          <End Role="TypePower" Type="Self.TypePower" Multiplicity="1" />
+          <End Role="Power" Type="Self.Power" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePower">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Power">
+              <PropertyRef Name="TypePowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -275,6 +294,7 @@
           <EntitySet Name="TypeArticle" EntityType="Self.TypeArticle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeCharacter" EntityType="Self.TypeCharacter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypePerk" EntityType="Self.TypePerk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypePower" EntityType="Self.TypePower" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Article_TypeArticle" Association="Self.FK_Article_TypeArticle">
             <End Role="TypeArticle" EntitySet="TypeArticle" />
@@ -320,6 +340,10 @@
             <End Role="TypeArticle" EntitySet="TypeArticle" />
             <End Role="Power" EntitySet="Power" />
           </AssociationSet>
+          <AssociationSet Name="FK_Power_TypePower" Association="Self.FK_Power_TypePower">
+            <End Role="TypePower" EntitySet="TypePower" />
+            <End Role="Power" EntitySet="Power" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
@@ -341,6 +365,7 @@
           <EntitySet Name="TypeArticle" EntityType="DbdWikiModel.TypeArticle" />
           <EntitySet Name="TypeCharacter" EntityType="DbdWikiModel.TypeCharacter" />
           <EntitySet Name="TypePerk" EntityType="DbdWikiModel.TypePerk" />
+          <EntitySet Name="TypePower" EntityType="DbdWikiModel.TypePower" />
           <EntitySet Name="User" EntityType="DbdWikiModel.User" />
           <AssociationSet Name="FK_Article_TypeArticle" Association="DbdWikiModel.FK_Article_TypeArticle">
             <End Role="TypeArticle" EntitySet="TypeArticle" />
@@ -384,6 +409,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Power_TypeArticle" Association="DbdWikiModel.FK_Power_TypeArticle">
             <End Role="TypeArticle" EntitySet="TypeArticle" />
+            <End Role="Power" EntitySet="Power" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Power_TypePower" Association="DbdWikiModel.FK_Power_TypePower">
+            <End Role="TypePower" EntitySet="TypePower" />
             <End Role="Power" EntitySet="Power" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="DbdWikiModel.FK_User_Role">
@@ -460,14 +489,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TypePower" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TypePowerId" Type="Int32" Nullable="false" />
           <Property Name="Count" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Range" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Range" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="CharacterId" Type="Int32" Nullable="false" />
           <Property Name="TypeArticleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Character" Relationship="DbdWikiModel.FK_Power_Character" FromRole="Power" ToRole="Character" />
           <NavigationProperty Name="TypeArticle" Relationship="DbdWikiModel.FK_Power_TypeArticle" FromRole="Power" ToRole="TypeArticle" />
+          <NavigationProperty Name="TypePower" Relationship="DbdWikiModel.FK_Power_TypePower" FromRole="Power" ToRole="TypePower" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -514,6 +544,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Perk" Relationship="DbdWikiModel.FK_Perk_TypePerk" FromRole="TypePerk" ToRole="Perk" />
+        </EntityType>
+        <EntityType Name="TypePower">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Power" Relationship="DbdWikiModel.FK_Power_TypePower" FromRole="TypePower" ToRole="Power" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -661,6 +699,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Power_TypePower">
+          <End Type="DbdWikiModel.TypePower" Role="TypePower" Multiplicity="1" />
+          <End Type="DbdWikiModel.Power" Role="Power" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePower">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Power">
+              <PropertyRef Name="TypePowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Type="DbdWikiModel.Role" Role="Role" Multiplicity="1" />
           <End Type="DbdWikiModel.User" Role="User" Multiplicity="*" />
@@ -742,7 +792,7 @@
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Range" ColumnName="Range" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
-                <ScalarProperty Name="TypePower" ColumnName="TypePower" />
+                <ScalarProperty Name="TypePowerId" ColumnName="TypePowerId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -787,6 +837,14 @@
           <EntitySetMapping Name="TypePerk">
             <EntityTypeMapping TypeName="DbdWikiModel.TypePerk">
               <MappingFragment StoreEntitySet="TypePerk">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypePower">
+            <EntityTypeMapping TypeName="DbdWikiModel.TypePower">
+              <MappingFragment StoreEntitySet="TypePower">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

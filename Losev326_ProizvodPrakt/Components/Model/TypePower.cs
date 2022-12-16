@@ -12,20 +12,18 @@ namespace Losev326_ProizvodPrakt.Components.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Power
+    public partial class TypePower
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TypePower()
+        {
+            this.Power = new HashSet<Power>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public int TypePowerId { get; set; }
-        public string Count { get; set; }
-        public string Range { get; set; }
-        public byte[] Image { get; set; }
-        public int CharacterId { get; set; }
-        public int TypeArticleId { get; set; }
     
-        public virtual Character Character { get; set; }
-        public virtual TypeArticle TypeArticle { get; set; }
-        public virtual TypePower TypePower { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Power> Power { get; set; }
     }
 }

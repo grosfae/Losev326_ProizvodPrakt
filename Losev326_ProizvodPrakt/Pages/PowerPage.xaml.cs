@@ -83,7 +83,7 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Выберите способность");
                 return;
             }
-            NavigationService.Navigate(new PowerAddEditPage(selectedPower));
+            NavigationService.Navigate(new PowerViewPage(selectedPower));
         }
     }
 }

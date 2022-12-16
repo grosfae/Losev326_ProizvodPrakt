@@ -28,7 +28,8 @@ namespace Losev326_ProizvodPrakt.Pages
             contextCharacter = character;
             DataContext = contextCharacter;
             LvPerks.ItemsSource = App.DB.Perk.Where(x => x.CharacterId == contextCharacter.Id).ToList();
-            if(contextCharacter.TypeCharacterId == 2)
+            LvPower.ItemsSource = App.DB.Power.ToList();
+            if (contextCharacter.TypeCharacterId == 2)
             {
                 StPower.Visibility = Visibility.Collapsed;
             }
