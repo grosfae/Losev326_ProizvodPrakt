@@ -29,7 +29,7 @@ namespace Losev326_ProizvodPrakt.Pages
 
         private void BtnRegFinish_Click(object sender, RoutedEventArgs e)
         {
-            if (TbLogin.Text.Trim().Length <= 0 || PbPassword.Password.Trim().Length <= 0 || PbTwoPassword.Password.Trim().Length <= 0)
+            if (TbLogin.Text.Trim().Length <= 0 || PbPassword.Password.Trim().Length <= 0 || PbTwoPassword.Password.Trim().Length <= 0 || TbNickname.Text.Trim().Length <= 0)
             {
                 MessageBox.Show("Заполните все поля!");
             }
@@ -41,24 +41,30 @@ namespace Losev326_ProizvodPrakt.Pages
                 }
                 else
                 {
-                    App.LoggedUser = App.DB.User.ToList().Find(x => x.Login == TbLogin.Text);
+                    App.LoggedUser = App.DB.User.ToList().Find(x => x.Nickname == TbNickname.Text);
                     if (App.LoggedUser != null)
                     {
-                        MessageBox.Show("Такой пользователь уже есть!");
+                        MessageBox.Show("Такой никнейм уже есть!");
                     }
                     else
                     {
+                        App.LoggedUser = App.DB.User.ToList().Find(x => x.Login == TbLogin.Text);
+                        if (App.LoggedUser != null)
+                        {
+                            MessageBox.Show("Такой логин уже есть!");
+                        }
+                        else
+                        {
                             App.DB.User.Add(new User()
                             {
-                                FirstName = TbFirstName.Text,
-                                LastName = TbLastName.Text,
-                                Patronymic = TbPatronymic.Text,
+                                Nickname = TbNickname.Text.Trim(),
                                 Login = TbLogin.Text.Trim(),
                                 Password = PbPassword.Password.Trim(),
                                 RoleId = 3
                             });
-                        App.DB.SaveChanges();
-                        NavigationService.GoBack();
+                            App.DB.SaveChanges();
+                            NavigationService.GoBack();
+                        }
                     }
                 }
             }

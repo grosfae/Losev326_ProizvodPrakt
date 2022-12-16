@@ -64,6 +64,10 @@ namespace Losev326_ProizvodPrakt.Pages
             {
                 errorMessage += "Выберите роль персонажа\n";
             }
+            if (contextCharacter.Image == null)
+            {
+                errorMessage += "Добавьте картинку\n";
+            }
             if (string.IsNullOrWhiteSpace(errorMessage) == false)
             {
                 MessageBox.Show(errorMessage);

@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +82,9 @@
       <DependentUpon>WikiModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Model\Map.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Model\MapPhoto.cs">
       <DependentUpon>WikiModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Model\MoveSpeed.cs">
@@ -150,6 +156,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MapAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MapsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MapViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PerkAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PerksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PerkViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PowerAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RegPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,6 +216,24 @@
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MapAddEditPage.xaml.cs">
+      <DependentUpon>MapAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MapsPage.xaml.cs">
+      <DependentUpon>MapsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MapViewPage.xaml.cs">
+      <DependentUpon>MapViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PerkAddEditPage.xaml.cs">
+      <DependentUpon>PerkAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PerksPage.xaml.cs">
+      <DependentUpon>PerksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PerkViewPage.xaml.cs">
+      <DependentUpon>PerkViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PowerAddEditPage.xaml.cs">
       <DependentUpon>PowerAddEditPage.xaml</DependentUpon>

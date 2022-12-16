@@ -32,7 +32,7 @@ namespace Losev326_ProizvodPrakt.Pages
 
         private void BtnPerks_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuFrame.Navigate(new PerksPage());
         }
 
         private void BtnCharacters_Click(object sender, RoutedEventArgs e)
@@ -47,7 +47,7 @@ namespace Losev326_ProizvodPrakt.Pages
 
         private void BtnMaps_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuFrame.Navigate(new MapsPage());
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)

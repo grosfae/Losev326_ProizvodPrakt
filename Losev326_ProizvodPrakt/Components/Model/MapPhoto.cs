@@ -12,23 +12,12 @@ namespace Losev326_ProizvodPrakt.Components.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Map
+    public partial class MapPhoto
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Map()
-        {
-            this.MapPhoto = new HashSet<MapPhoto>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string History { get; set; }
-        public string Specials { get; set; }
-        public byte[] Image { get; set; }
-        public int TypeArticleId { get; set; }
+        public int MapId { get; set; }
+        public byte[] ImagePath { get; set; }
     
-        public virtual TypeArticle TypeArticle { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MapPhoto> MapPhoto { get; set; }
+        public virtual Map Map { get; set; }
     }
 }

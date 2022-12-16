@@ -33,8 +33,18 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="History" Type="varchar(max)" Nullable="false" />
+          <Property Name="Specials" Type="varchar(max)" Nullable="false" />
           <Property Name="Image" Type="image" Nullable="false" />
           <Property Name="TypeArticleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MapPhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MapId" Type="int" Nullable="false" />
+          <Property Name="ImagePath" Type="image" Nullable="false" />
         </EntityType>
         <EntityType Name="MoveSpeed">
           <Key>
@@ -119,9 +129,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Patronymic" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nickname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
@@ -195,6 +203,18 @@
             </Principal>
             <Dependent Role="Map">
               <PropertyRef Name="TypeArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapPhoto_Map">
+          <End Role="Map" Type="Self.Map" Multiplicity="1" />
+          <End Role="MapPhoto" Type="Self.MapPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Map">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapPhoto">
+              <PropertyRef Name="MapId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -286,6 +306,7 @@
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Map" EntityType="Self.Map" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MapPhoto" EntityType="Self.MapPhoto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MoveSpeed" EntityType="Self.MoveSpeed" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perk" EntityType="Self.Perk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Power" EntityType="Self.Power" Schema="dbo" store:Type="Tables" />
@@ -319,6 +340,10 @@
           <AssociationSet Name="FK_Map_TypeArticle" Association="Self.FK_Map_TypeArticle">
             <End Role="TypeArticle" EntitySet="TypeArticle" />
             <End Role="Map" EntitySet="Map" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapPhoto_Map" Association="Self.FK_MapPhoto_Map">
+            <End Role="Map" EntitySet="Map" />
+            <End Role="MapPhoto" EntitySet="MapPhoto" />
           </AssociationSet>
           <AssociationSet Name="FK_Perk_Character" Association="Self.FK_Perk_Character">
             <End Role="Character" EntitySet="Character" />
@@ -356,7 +381,6 @@
         <EntityContainer Name="DbdWikiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Article" EntityType="DbdWikiModel.Article" />
           <EntitySet Name="Character" EntityType="DbdWikiModel.Character" />
-          <EntitySet Name="Map" EntityType="DbdWikiModel.Map" />
           <EntitySet Name="MoveSpeed" EntityType="DbdWikiModel.MoveSpeed" />
           <EntitySet Name="Perk" EntityType="DbdWikiModel.Perk" />
           <EntitySet Name="Power" EntityType="DbdWikiModel.Power" />
@@ -366,13 +390,8 @@
           <EntitySet Name="TypeCharacter" EntityType="DbdWikiModel.TypeCharacter" />
           <EntitySet Name="TypePerk" EntityType="DbdWikiModel.TypePerk" />
           <EntitySet Name="TypePower" EntityType="DbdWikiModel.TypePower" />
-          <EntitySet Name="User" EntityType="DbdWikiModel.User" />
           <AssociationSet Name="FK_Article_TypeArticle" Association="DbdWikiModel.FK_Article_TypeArticle">
             <End Role="TypeArticle" EntitySet="TypeArticle" />
-            <End Role="Article" EntitySet="Article" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Article_User" Association="DbdWikiModel.FK_Article_User">
-            <End Role="User" EntitySet="User" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
           <AssociationSet Name="FK_Character_MoveSpeed" Association="DbdWikiModel.FK_Character_MoveSpeed">
@@ -395,10 +414,6 @@
             <End Role="Character" EntitySet="Character" />
             <End Role="Power" EntitySet="Power" />
           </AssociationSet>
-          <AssociationSet Name="FK_Map_TypeArticle" Association="DbdWikiModel.FK_Map_TypeArticle">
-            <End Role="TypeArticle" EntitySet="TypeArticle" />
-            <End Role="Map" EntitySet="Map" />
-          </AssociationSet>
           <AssociationSet Name="FK_Perk_TypeArticle" Association="DbdWikiModel.FK_Perk_TypeArticle">
             <End Role="TypeArticle" EntitySet="TypeArticle" />
             <End Role="Perk" EntitySet="Perk" />
@@ -414,6 +429,21 @@
           <AssociationSet Name="FK_Power_TypePower" Association="DbdWikiModel.FK_Power_TypePower">
             <End Role="TypePower" EntitySet="TypePower" />
             <End Role="Power" EntitySet="Power" />
+          </AssociationSet>
+          <EntitySet Name="Map" EntityType="DbdWikiModel.Map" />
+          <EntitySet Name="MapPhoto" EntityType="DbdWikiModel.MapPhoto" />
+          <AssociationSet Name="FK_Map_TypeArticle" Association="DbdWikiModel.FK_Map_TypeArticle">
+            <End Role="TypeArticle" EntitySet="TypeArticle" />
+            <End Role="Map" EntitySet="Map" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MapPhoto_Map" Association="DbdWikiModel.FK_MapPhoto_Map">
+            <End Role="Map" EntitySet="Map" />
+            <End Role="MapPhoto" EntitySet="MapPhoto" />
+          </AssociationSet>
+          <EntitySet Name="User" EntityType="DbdWikiModel.User" />
+          <AssociationSet Name="FK_Article_User" Association="DbdWikiModel.FK_Article_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Article" EntitySet="Article" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="DbdWikiModel.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -448,16 +478,6 @@
           <NavigationProperty Name="TypeCharacter" Relationship="DbdWikiModel.FK_Character_TypeCharacter" FromRole="Character" ToRole="TypeCharacter" />
           <NavigationProperty Name="Perk" Relationship="DbdWikiModel.FK_Perk_Character" FromRole="Character" ToRole="Perk" />
           <NavigationProperty Name="Power" Relationship="DbdWikiModel.FK_Power_Character" FromRole="Character" ToRole="Power" />
-        </EntityType>
-        <EntityType Name="Map">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="TypeArticleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TypeArticle" Relationship="DbdWikiModel.FK_Map_TypeArticle" FromRole="Map" ToRole="TypeArticle" />
         </EntityType>
         <EntityType Name="MoveSpeed">
           <Key>
@@ -525,9 +545,9 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Article" Relationship="DbdWikiModel.FK_Article_TypeArticle" FromRole="TypeArticle" ToRole="Article" />
           <NavigationProperty Name="Character" Relationship="DbdWikiModel.FK_Character_TypeArticle" FromRole="TypeArticle" ToRole="Character" />
-          <NavigationProperty Name="Map" Relationship="DbdWikiModel.FK_Map_TypeArticle" FromRole="TypeArticle" ToRole="Map" />
           <NavigationProperty Name="Perk" Relationship="DbdWikiModel.FK_Perk_TypeArticle" FromRole="TypeArticle" ToRole="Perk" />
           <NavigationProperty Name="Power" Relationship="DbdWikiModel.FK_Power_TypeArticle" FromRole="TypeArticle" ToRole="Power" />
+          <NavigationProperty Name="Map" Relationship="DbdWikiModel.FK_Map_TypeArticle" FromRole="TypeArticle" ToRole="Map" />
         </EntityType>
         <EntityType Name="TypeCharacter">
           <Key>
@@ -553,20 +573,6 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Power" Relationship="DbdWikiModel.FK_Power_TypePower" FromRole="TypePower" ToRole="Power" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Article" Relationship="DbdWikiModel.FK_Article_User" FromRole="User" ToRole="Article" />
-          <NavigationProperty Name="Role" Relationship="DbdWikiModel.FK_User_Role" FromRole="User" ToRole="Role" />
-        </EntityType>
         <Association Name="FK_Article_TypeArticle">
           <End Type="DbdWikiModel.TypeArticle" Role="TypeArticle" Multiplicity="1" />
           <End Type="DbdWikiModel.Article" Role="Article" Multiplicity="*" />
@@ -576,18 +582,6 @@
             </Principal>
             <Dependent Role="Article">
               <PropertyRef Name="TypeArticlerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Article_User">
-          <End Type="DbdWikiModel.User" Role="User" Multiplicity="1" />
-          <End Type="DbdWikiModel.Article" Role="Article" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Article">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -651,18 +645,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Map_TypeArticle">
-          <End Type="DbdWikiModel.TypeArticle" Role="TypeArticle" Multiplicity="1" />
-          <End Type="DbdWikiModel.Map" Role="Map" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeArticle">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Map">
-              <PropertyRef Name="TypeArticleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Perk_TypeArticle">
           <End Type="DbdWikiModel.TypeArticle" Role="TypeArticle" Multiplicity="1" />
           <End Type="DbdWikiModel.Perk" Role="Perk" Multiplicity="*" />
@@ -711,6 +693,76 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="History" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Specials" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="TypeArticleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypeArticle" Relationship="DbdWikiModel.FK_Map_TypeArticle" FromRole="Map" ToRole="TypeArticle" />
+          <NavigationProperty Name="MapPhoto" Relationship="DbdWikiModel.FK_MapPhoto_Map" FromRole="Map" ToRole="MapPhoto" />
+        </EntityType>
+        <EntityType Name="MapPhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MapId" Type="Int32" Nullable="false" />
+          <Property Name="ImagePath" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Map" Relationship="DbdWikiModel.FK_MapPhoto_Map" FromRole="MapPhoto" ToRole="Map" />
+        </EntityType>
+        <Association Name="FK_Map_TypeArticle">
+          <End Type="DbdWikiModel.TypeArticle" Role="TypeArticle" Multiplicity="1" />
+          <End Type="DbdWikiModel.Map" Role="Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeArticle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="TypeArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MapPhoto_Map">
+          <End Type="DbdWikiModel.Map" Role="Map" Multiplicity="1" />
+          <End Type="DbdWikiModel.MapPhoto" Role="MapPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Map">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MapPhoto">
+              <PropertyRef Name="MapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nickname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Article" Relationship="DbdWikiModel.FK_Article_User" FromRole="User" ToRole="Article" />
+          <NavigationProperty Name="Role" Relationship="DbdWikiModel.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Article_User">
+          <End Type="DbdWikiModel.User" Role="User" Multiplicity="1" />
+          <End Type="DbdWikiModel.Article" Role="Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Type="DbdWikiModel.Role" Role="Role" Multiplicity="1" />
           <End Type="DbdWikiModel.User" Role="User" Multiplicity="*" />
@@ -748,16 +800,6 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="TerrorRadius" ColumnName="TerrorRadius" />
                 <ScalarProperty Name="MoveSpeedId" ColumnName="MoveSpeedId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Map">
-            <EntityTypeMapping TypeName="DbdWikiModel.Map">
-              <MappingFragment StoreEntitySet="Map">
-                <ScalarProperty Name="TypeArticleId" ColumnName="TypeArticleId" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -850,15 +892,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Map">
+            <EntityTypeMapping TypeName="DbdWikiModel.Map">
+              <MappingFragment StoreEntitySet="Map">
+                <ScalarProperty Name="TypeArticleId" ColumnName="TypeArticleId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Specials" ColumnName="Specials" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MapPhoto">
+            <EntityTypeMapping TypeName="DbdWikiModel.MapPhoto">
+              <MappingFragment StoreEntitySet="MapPhoto">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="MapId" ColumnName="MapId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="DbdWikiModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

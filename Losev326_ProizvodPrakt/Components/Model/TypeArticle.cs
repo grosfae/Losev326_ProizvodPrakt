@@ -19,9 +19,9 @@ namespace Losev326_ProizvodPrakt.Components.Model
         {
             this.Article = new HashSet<Article>();
             this.Character = new HashSet<Character>();
-            this.Map = new HashSet<Map>();
             this.Perk = new HashSet<Perk>();
             this.Power = new HashSet<Power>();
+            this.Map = new HashSet<Map>();
         }
     
         public int Id { get; set; }
@@ -32,10 +32,10 @@ namespace Losev326_ProizvodPrakt.Components.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Character> Character { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Map> Map { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Perk> Perk { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Power> Power { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Map> Map { get; set; }
     }
 }

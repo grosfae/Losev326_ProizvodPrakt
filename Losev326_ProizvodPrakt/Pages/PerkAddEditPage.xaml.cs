@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,48 +20,40 @@ using System.Windows.Shapes;
 namespace Losev326_ProizvodPrakt.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PowerAddEditPage.xaml
+    /// Логика взаимодействия для PerkAddEditPage.xaml
     /// </summary>
-    public partial class PowerAddEditPage : Page
+    public partial class PerkAddEditPage : Page
     {
-        Power contextPower;
-        public PowerAddEditPage(Power power)
+        Perk contextPerk;
+        public PerkAddEditPage(Perk perk)
         {
             InitializeComponent();
-            CbCharacter.ItemsSource = App.DB.Character.Where(x => x.TypeCharacterId == 1).ToList();
-            CbTypePower.ItemsSource = App.DB.TypePower.ToList();
-            contextPower = power;
-            DataContext = contextPower;
+            CbCharacter.ItemsSource = App.DB.Character.ToList();
+            CbTypePerk.ItemsSource = App.DB.TypePerk.ToList();
+            contextPerk = perk;
+            DataContext = contextPerk;
 
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             string errorMessage = "";
-            if (string.IsNullOrWhiteSpace(contextPower.Name))
+            if (string.IsNullOrWhiteSpace(contextPerk.Name))
             {
                 errorMessage += "Введите название\n";
             }
-            if (string.IsNullOrWhiteSpace(contextPower.Description))
+            if (string.IsNullOrWhiteSpace(contextPerk.Description))
             {
                 errorMessage += "Введите описание\n";
             }
-            if (contextPower.TypePower == null)
+            if (contextPerk.TypePerk == null)
             {
-                errorMessage += "Выберите тип способности\n";
+                errorMessage += "Выберите тип навыка\n";
             }
-            if (string.IsNullOrWhiteSpace(contextPower.Count))
-            {
-                errorMessage += "Введите количество зарядов\n";
-            }
-            if (string.IsNullOrWhiteSpace(contextPower.Range))
-            {
-                errorMessage += "Введите радиус\n";
-            }
-            if (contextPower.Character == null)
+            if (contextPerk.Character == null)
             {
                 errorMessage += "Выберите обладателя\n";
             }
-            if (contextPower.Image == null)
+            if (contextPerk.Image == null)
             {
                 errorMessage += "Добавьте картинку\n";
             }
@@ -69,10 +62,10 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show(errorMessage);
                 return;
             }
-            if (contextPower.Id == 0)
+            if (contextPerk.Id == 0)
             {
-                contextPower.TypeArticleId = 2;
-                App.DB.Power.Add(contextPower);
+                contextPerk.TypeArticleId = 3;
+                App.DB.Perk.Add(contextPerk);
             }
             App.DB.SaveChanges();
             NavigationService.GoBack();
@@ -88,9 +81,21 @@ namespace Losev326_ProizvodPrakt.Pages
             var dialog = new OpenFileDialog();
             if (dialog.ShowDialog().GetValueOrDefault())
             {
-                contextPower.Image = File.ReadAllBytes(dialog.FileName);
+                contextPerk.Image = File.ReadAllBytes(dialog.FileName);
                 DataContext = null;
-                DataContext = contextPower;
+                DataContext = contextPerk;
+            }
+        }
+
+        private void CbTypePerk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(CbTypePerk.SelectedIndex == 0)
+            {
+                CbCharacter.ItemsSource = App.DB.Character.Where(x => x.TypeCharacterId == 1).ToList();
+            }
+            else if (CbTypePerk.SelectedIndex == 1)
+            {
+                CbCharacter.ItemsSource = App.DB.Character.Where(x => x.TypeCharacterId == 2).ToList();
             }
         }
     }

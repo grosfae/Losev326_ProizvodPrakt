@@ -1,13 +1,12 @@
-﻿<Page x:Class="Losev326_ProizvodPrakt.Pages.PowerPage"
+﻿<Page x:Class="Losev326_ProizvodPrakt.UsersPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Losev326_ProizvodPrakt.Pages"
+      xmlns:local="clr-namespace:Losev326_ProizvodPrakt"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1000"
-      Loaded="Page_Loaded"
-      Title="PowerPage">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UsersPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,22 +25,23 @@
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="Black">
             <TextBlock Text="Поиск" Foreground="White"/>
             <TextBox x:Name="TbSearch" Width="160" TextChanged="TbSearch_TextChanged" Height="20"/>
-            <Button x:Name="BtnView" Style="{DynamicResource BTS}" Width="120" Content="Читать" FontSize="13" Margin="0 30 0 0" Click="BtnView_Click"/>
+            <TextBlock Text="Роль" Foreground="White"/>
+            <ComboBox x:Name="CbRole" SelectedItem="{Binding Role}" DisplayMemberPath="Name" Width="160" FontFamily="Museo Cyrl 500" SelectionChanged="CbRole_SelectionChanged"/>
         </StackPanel>
-        <ListView x:Name="LvPowers" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=8}" Background="#FF3C3C3C" BorderBrush="#FF3C3C3C">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Width="650"></WrapPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+        <ListView x:Name="LvUsers" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=8}" Background="#FF3C3C3C" BorderBrush="#FF3C3C3C">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <Image Source="{Binding Image}" Width="150" Height="150" />
-                        <TextBlock Text="{Binding Name, StringFormat='Способность: {0}'}" Foreground="White"/>
-                        <TextBlock Text="{Binding Character.Name, StringFormat='Владелец: {0}'}" Foreground="White"/>
-                        <TextBlock Text="{Binding TypePower.Name, StringFormat='Тип: {0}'}" Foreground="White"/>
-                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Image}" Width="60" Height="60" />
+                            <StackPanel>
+                            <TextBlock Text="{Binding Nickname, StringFormat='Никнейм: {0}'}" Foreground="White"/>
+                            <TextBlock Text="{Binding Role.Name, StringFormat='Роль: {0}'}" Foreground="White"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Login, StringFormat='Логин: {0}'}" Foreground="White"/>
+                            <TextBlock Text="{Binding Password, StringFormat='Пароль: {0}'}" Foreground="White"/>
+                        </StackPanel>
+                        </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

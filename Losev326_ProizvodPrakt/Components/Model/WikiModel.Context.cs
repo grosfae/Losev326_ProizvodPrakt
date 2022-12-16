@@ -27,7 +27,6 @@ namespace Losev326_ProizvodPrakt.Components.Model
     
         public virtual DbSet<Article> Article { get; set; }
         public virtual DbSet<Character> Character { get; set; }
-        public virtual DbSet<Map> Map { get; set; }
         public virtual DbSet<MoveSpeed> MoveSpeed { get; set; }
         public virtual DbSet<Perk> Perk { get; set; }
         public virtual DbSet<Power> Power { get; set; }
@@ -37,6 +36,8 @@ namespace Losev326_ProizvodPrakt.Components.Model
         public virtual DbSet<TypeCharacter> TypeCharacter { get; set; }
         public virtual DbSet<TypePerk> TypePerk { get; set; }
         public virtual DbSet<TypePower> TypePower { get; set; }
+        public virtual DbSet<Map> Map { get; set; }
+        public virtual DbSet<MapPhoto> MapPhoto { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }
