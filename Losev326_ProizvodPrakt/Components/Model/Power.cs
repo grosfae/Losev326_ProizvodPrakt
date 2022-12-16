@@ -14,18 +14,17 @@ namespace Losev326_ProizvodPrakt.Components.Model
     
     public partial class Power
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Power()
-        {
-            this.Character = new HashSet<Character>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string TypePower { get; set; }
+        public string Count { get; set; }
+        public string Range { get; set; }
         public byte[] Image { get; set; }
+        public int CharacterId { get; set; }
+        public int TypeArticleId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Character> Character { get; set; }
+        public virtual Character Character { get; set; }
+        public virtual TypeArticle TypeArticle { get; set; }
     }
 }

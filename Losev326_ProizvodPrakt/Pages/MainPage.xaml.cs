@@ -37,12 +37,12 @@ namespace Losev326_ProizvodPrakt.Pages
 
         private void BtnCharacters_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuFrame.Navigate(new CharactersPage());
         }
 
         private void BtnPowers_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuFrame.Navigate(new PowerPage());
         }
 
         private void BtnMaps_Click(object sender, RoutedEventArgs e)

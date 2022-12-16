@@ -78,6 +78,12 @@
     <Compile Include="Components\Model\Character.cs">
       <DependentUpon>WikiModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\Model\Map.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Model\MoveSpeed.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Components\Model\Perk.cs">
       <DependentUpon>WikiModel.tt</DependentUpon>
     </Compile>
@@ -88,6 +94,9 @@
       <DependentUpon>WikiModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Model\sysdiagrams.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Model\TypeArticle.cs">
       <DependentUpon>WikiModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Components\Model\TypeCharacter.cs">
@@ -118,7 +127,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\CharacterAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CharactersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CharacterViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,20 +147,47 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PowerAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PowerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PowerViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\RegPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\CharacterAddEditPage.xaml.cs">
+      <DependentUpon>CharacterAddEditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CharactersPage.xaml.cs">
       <DependentUpon>CharactersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CharacterViewPage.xaml.cs">
+      <DependentUpon>CharacterViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PowerAddEditPage.xaml.cs">
+      <DependentUpon>PowerAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PowerPage.xaml.cs">
+      <DependentUpon>PowerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PowerViewPage.xaml.cs">
+      <DependentUpon>PowerViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>

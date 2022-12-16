@@ -15,10 +15,10 @@ namespace Losev326_ProizvodPrakt.Components.Model
     public partial class Article
     {
         public int Id { get; set; }
-        public int CharacterId { get; set; }
+        public int TypeArticlerId { get; set; }
         public int UserId { get; set; }
     
-        public virtual Character Character { get; set; }
+        public virtual TypeArticle TypeArticle { get; set; }
         public virtual User User { get; set; }
     }
 }

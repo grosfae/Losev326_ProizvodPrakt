@@ -1,13 +1,12 @@
-﻿<Page x:Class="Losev326_ProizvodPrakt.Pages.CharactersPage"
+﻿<Page x:Class="Losev326_ProizvodPrakt.Pages.PowerPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Losev326_ProizvodPrakt.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="900"
-      Title="CharactersPage"
-      Loaded="Page_Loaded">
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="PowerPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,17 +21,13 @@
             <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13" Margin="600 0 0 0" Click="BtnAdd_Click"/>
             <Button x:Name="BtnEdit" Style="{DynamicResource BTS}" Width="100" Content="Изменить" FontSize="13" Click="BtnEdit_Click"/>
             <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Удалить" FontSize="13" Click="BtnDelete_Click"/>
-            </StackPanel>
+        </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="Black">
             <TextBlock Text="Поиск" Foreground="White"/>
             <TextBox x:Name="TbSearch" Width="160" TextChanged="TbSearch_TextChanged" Height="20"/>
-            <TextBlock Text="Тип персонажа" Foreground="White"/>
-            <ComboBox x:Name="CbTypeCharacter" SelectedItem="{Binding TypeCharacter}" DisplayMemberPath="Name" Width="160" FontFamily="Museo Cyrl 500" SelectionChanged="CbTypeCharacter_SelectionChanged"/>
-            <TextBlock Text="Скорость передвижения" Foreground="White"/>
-            <ComboBox x:Name="CbMoveSpeed" SelectedItem="{Binding MoveSpeed}" DisplayMemberPath="Value" Width="160" FontFamily="Museo Cyrl 500" SelectionChanged="CbTypeCharacter_SelectionChanged"/>
             <Button x:Name="BtnView" Style="{DynamicResource BTS}" Width="120" Content="Читать" FontSize="13" Margin="0 30 0 0" Click="BtnView_Click"/>
         </StackPanel>
-        <ListView x:Name="LvCharacters" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=8}" Background="#FF3C3C3C" BorderBrush="#FF3C3C3C">
+        <ListView x:Name="LvPowers" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=8}" Background="#FF3C3C3C" BorderBrush="#FF3C3C3C">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Width="650"></WrapPanel>
@@ -41,10 +36,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Image Source="{Binding Image}" Width="150" Height="208" />
-                        <TextBlock Text="{Binding Name, StringFormat='Персонаж: {0}'}" Foreground="White"/>
-                        <TextBlock Text="{Binding MoveSpeed.Value, StringFormat='Скорость: {0}'}" Foreground="White"/>
-                        <TextBlock Text="{Binding TypeCharacter.Name, StringFormat='Роль: {0}'}" Foreground="White"/>
+                        <Image Source="{Binding Image}" Width="150" Height="150" />
+                        <TextBlock Text="{Binding Name, StringFormat='Способность: {0}'}" Foreground="White"/>
+                        <TextBlock Text="{Binding Character.Name, StringFormat='Владелец: {0}'}" Foreground="White"/>
+                        <TextBlock Text="{Binding TypePower, StringFormat='Тип: {0}'}" Foreground="White"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

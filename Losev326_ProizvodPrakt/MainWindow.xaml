@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Losev326_ProizvodPrakt"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        Title="MainWindow" Height="600" Width="900">
+        Title="MainWindow" Height="1000" Width="900">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
