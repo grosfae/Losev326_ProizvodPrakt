@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Losev326_ProizvodPrakt"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        Title="MainWindow" Height="800" Width="900">
+        Icon="Resources/Logo.png"
+        Title="Dead By Daylight Wiki" Height="800" Width="900">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
