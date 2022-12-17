@@ -41,7 +41,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button x:Name="AddIngBtn" Style="{StaticResource Angle}" Background="#FF323130" Foreground="White" Width="300" Click="AddIngBtn_Click" Content="Добавить дололнительное изображение" Margin="0 5"/>
+                <Button x:Name="AddIngBtn" Style="{StaticResource Angle}" Background="#FF323130" Foreground="White" Width="300" Click="AddIngBtn_Click" Content="Добавить дололнительное изображение" Margin="0 5" ToolTip="Сначала создайте запись о локации, а после загрузите галерею"/>
                 <Button x:Name="DeleteIngBtn" Style="{StaticResource Angle}" Background="#FF323130" Foreground="White" Width="300" Click="DeleteIngBtn_Click" Content="Удалить дополнительное изображение"/>
             </StackPanel>
         </StackPanel>
