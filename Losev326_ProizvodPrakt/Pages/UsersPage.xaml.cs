@@ -30,29 +30,29 @@ namespace Losev326_ProizvodPrakt
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CharacterAddEditPage(new Character()));
+            NavigationService.Navigate(new UserAddEditPage(new User()));
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            var selectedCharacter = LvCharacters.SelectedItem as Character;
-            if (selectedCharacter == null)
+            var selectedUser = LvUsers.SelectedItem as User;
+            if (selectedUser == null)
             {
-                MessageBox.Show("Выберите персонажа");
+                MessageBox.Show("Выберите пользователя");
                 return;
             }
-            NavigationService.Navigate(new CharacterAddEditPage(selectedCharacter));
+            NavigationService.Navigate(new UserAddEditPage(selectedUser));
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var selectedCharacter = LvCharacters.SelectedItem as Character;
-            if (selectedCharacter == null)
+            var selectedUser = LvUsers.SelectedItem as User;
+            if (selectedUser == null)
             {
                 MessageBox.Show("Выберите персонажа");
                 return;
             }
-            App.DB.Character.Remove(selectedCharacter);
+            App.DB.User.Remove(selectedUser);
             App.DB.SaveChanges();
             Refresh();
         }
@@ -69,13 +69,13 @@ namespace Losev326_ProizvodPrakt
                 filterService = filterService.Where(x => x.RoleId == 1).ToList();
             else if (CbRole.SelectedIndex == 1)
                 filterService = filterService.Where(x => x.RoleId == 2).ToList();
-            else if (CbRole.SelectedIndex == 1)
+            else if (CbRole.SelectedIndex == 2)
                 filterService = filterService.Where(x => x.RoleId == 3).ToList();
             if (TbSearch.Text.Length > 0)
             {
-                filterService = filterService.Where(x => x.FirstName.ToLower().StartsWith(TbSearch.Text.ToLower()));
+                filterService = filterService.Where(x => x.Nickname.ToLower().StartsWith(TbSearch.Text.ToLower()));
             }
-            LvCharacters.ItemsSource = filterService.ToList();
+            LvUsers.ItemsSource = filterService.ToList();
 
         }
 
@@ -86,7 +86,7 @@ namespace Losev326_ProizvodPrakt
 
         private void CbRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Refresh();
         }
     }
 }

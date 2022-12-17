@@ -24,6 +24,12 @@ namespace Losev326_ProizvodPrakt.Pages
         public PowerPage()
         {
             InitializeComponent();
+            if (App.LoggedUser.Role.Id == 1 || App.LoggedUser.Role.Id == 2)
+            {
+                BtnAdd.Visibility = Visibility.Visible;
+                BtnEdit.Visibility = Visibility.Visible;
+                BtnDelete.Visibility = Visibility.Visible;
+            }
             LvPowers.ItemsSource = App.DB.Power.ToList();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)

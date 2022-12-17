@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Losev326_ProizvodPrakt"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
       Title="UsersPage">
 
     <Grid>
@@ -32,8 +33,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding Image}" Width="60" Height="60" />
-                            <StackPanel>
+                        <Border CornerRadius="50" Width="50" Height="50">
+                            <Border.Background>
+                                <ImageBrush Stretch="Fill" ImageSource="{Binding Image}"/>
+                            </Border.Background>
+                        </Border>
+                        <StackPanel>
                             <TextBlock Text="{Binding Nickname, StringFormat='Никнейм: {0}'}" Foreground="White"/>
                             <TextBlock Text="{Binding Role.Name, StringFormat='Роль: {0}'}" Foreground="White"/>
                         </StackPanel>

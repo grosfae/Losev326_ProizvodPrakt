@@ -9,29 +9,35 @@
       Title="PowerViewPage">
 
     <Grid Background="#FF3C3C3C">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="587*"/>
-            <ColumnDefinition Width="313*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
-            <Button x:Name="BtnCancel" Style="{DynamicResource BTS}" Width="100" Content="Назад" FontSize="13" Click="BtnCancel_Click" Margin="800 0 0 0"/>
-        </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1" >
-            <TextBlock Text="{Binding Name}" FontSize="20" Margin="5 0 0 20" Foreground="White"/>
-            <TextBlock Text="Описание" FontSize="18" Foreground="White"/>
-            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Height="auto" Foreground="White"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="20" Background="Black" Height="auto" VerticalAlignment="Top" Width="240">
-            <TextBlock Text="{Binding Name}" Width="240" Height="30" TextAlignment="Center" HorizontalAlignment="Center" Background="#FF4A4948" FontSize="20" Foreground="White"/>
-            <Image Height="150" Width="150" Source="{Binding Image}" Margin="0 0 0 0"/>
-            <TextBlock Text="{Binding Character.Name, StringFormat='Владелец: {0}'}" Foreground="White"/>
-            <TextBlock Text="{Binding Count, StringFormat='Количество зарядов: {0}'}" Foreground="White"/>
-            <TextBlock Text="{Binding Range, StringFormat='Расстояние: {0}'}" Foreground="White"/>
-            <TextBlock Text="{Binding TypePower.Name, StringFormat='Тип способности: {0}'}" Foreground="White"/>
-        </StackPanel>
+        <ScrollViewer>
+            <StackPanel>
+                <Grid Background="#FF3C3C3C">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="587*"/>
+                        <ColumnDefinition Width="313*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
+                        <Button x:Name="BtnCancel" Style="{DynamicResource BTS}" Width="100" Content="Назад" FontSize="13" Click="BtnCancel_Click" Margin="770 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="0" Grid.Row="1" Margin="5 0 0 0">
+                        <TextBlock Text="{Binding Name}" FontSize="20" Margin="5 0 0 20" Foreground="White"/>
+                        <TextBlock Text="Описание" FontSize="18" Foreground="White"/>
+                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Height="auto" Foreground="White" FontSize="15"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="1" Margin="20" Background="Black" Height="auto" VerticalAlignment="Top" Width="240">
+                        <TextBlock Text="{Binding Name}" Width="240" Height="30" TextAlignment="Center" HorizontalAlignment="Center" Background="#FF4A4948" FontSize="20" Foreground="White"/>
+                        <Image Height="150" Width="150" Source="{Binding Image}" Margin="0 0 0 0"/>
+                        <TextBlock Text="{Binding Character.Name, StringFormat='Владелец: {0}'}" Foreground="White"/>
+                        <TextBlock Text="{Binding Count, StringFormat='Количество зарядов: {0}'}" Foreground="White"/>
+                        <TextBlock Text="{Binding Range, StringFormat='Расстояние: {0}'}" Foreground="White"/>
+                        <TextBlock Text="{Binding TypePower.Name, StringFormat='Тип способности: {0}'}" Foreground="White"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

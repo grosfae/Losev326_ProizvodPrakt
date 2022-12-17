@@ -24,6 +24,12 @@ namespace Losev326_ProizvodPrakt.Pages
         public PerksPage()
         {
             InitializeComponent();
+            if (App.LoggedUser.Role.Id == 1 || App.LoggedUser.Role.Id == 2)
+            {
+                BtnAdd.Visibility = Visibility.Visible;
+                BtnEdit.Visibility = Visibility.Visible;
+                BtnDelete.Visibility = Visibility.Visible;
+            }
             LvPerks.ItemsSource = App.DB.Perk.ToList();
             CbTypePerk.ItemsSource = App.DB.TypeCharacter.ToList();
         }

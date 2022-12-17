@@ -133,6 +133,7 @@
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="image" />
         </EntityType>
         <Association Name="FK_Article_TypeArticle">
           <End Role="TypeArticle" Type="Self.TypeArticle" Multiplicity="1" />
@@ -449,7 +450,7 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="Id" />
@@ -748,6 +749,7 @@
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Article" Relationship="DbdWikiModel.FK_Article_User" FromRole="User" ToRole="Article" />
           <NavigationProperty Name="Role" Relationship="DbdWikiModel.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
@@ -916,6 +918,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="DbdWikiModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />

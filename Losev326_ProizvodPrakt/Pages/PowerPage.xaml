@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Losev326_ProizvodPrakt.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1000"
+      d:DesignHeight="600" d:DesignWidth="900"
       Loaded="Page_Loaded"
       Title="PowerPage">
 
@@ -19,9 +19,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Height="35" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
-            <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13" Margin="600 0 0 0" Click="BtnAdd_Click"/>
-            <Button x:Name="BtnEdit" Style="{DynamicResource BTS}" Width="100" Content="Изменить" FontSize="13" Click="BtnEdit_Click"/>
-            <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Удалить" FontSize="13" Click="BtnDelete_Click"/>
+            <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13" Margin="600 0 0 0" Click="BtnAdd_Click" Visibility="Collapsed"/>
+            <Button x:Name="BtnEdit" Style="{DynamicResource BTS}" Width="100" Content="Изменить" FontSize="13" Click="BtnEdit_Click" Visibility="Collapsed"/>
+            <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Удалить" FontSize="13" Click="BtnDelete_Click" Visibility="Collapsed"/>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="Black">
             <TextBlock Text="Поиск" Foreground="White"/>

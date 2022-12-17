@@ -41,14 +41,7 @@ namespace Losev326_ProizvodPrakt.Pages
                 }
                 else
                 {
-                    App.LoggedUser = App.DB.User.ToList().Find(x => x.Nickname == TbNickname.Text);
-                    if (App.LoggedUser != null)
-                    {
-                        MessageBox.Show("Такой никнейм уже есть!");
-                    }
-                    else
-                    {
-                        App.LoggedUser = App.DB.User.ToList().Find(x => x.Login == TbLogin.Text);
+                       App.LoggedUser = App.DB.User.ToList().Find(x => x.Login == TbLogin.Text);
                         if (App.LoggedUser != null)
                         {
                             MessageBox.Show("Такой логин уже есть!");
@@ -65,7 +58,7 @@ namespace Losev326_ProizvodPrakt.Pages
                             App.DB.SaveChanges();
                             NavigationService.GoBack();
                         }
-                    }
+                    
                 }
             }
         }

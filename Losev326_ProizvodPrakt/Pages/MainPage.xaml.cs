@@ -23,11 +23,15 @@ namespace Losev326_ProizvodPrakt.Pages
         public MainPage()
         {
             InitializeComponent();
+            if (App.LoggedUser.Role.Id == 1)
+            {
+                BtnUsers.Visibility = Visibility.Visible;
+            }
         }
 
         private void BtnUsers_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuFrame.Navigate(new UsersPage());
         }
 
         private void BtnPerks_Click(object sender, RoutedEventArgs e)
@@ -54,6 +58,11 @@ namespace Losev326_ProizvodPrakt.Pages
         {
             App.LoggedUser = null;
             NavigationService.Navigate(new LoginPage());
+        }
+
+        private void BtnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFrame.Navigate(new ProfilePage());
         }
     }
 }

@@ -22,7 +22,8 @@
             <Button x:Name="BtnPerks" Style="{StaticResource BTS}" Content="Навыки" Click="BtnPerks_Click"/>
             <Button x:Name="BtnMaps" Style="{StaticResource BTS}" Content="Карты" Click="BtnMaps_Click"/>
             <Button x:Name="BtnPowers" Style="{StaticResource BTS}" Content="Способности" Click="BtnPowers_Click"/>
-            <Button x:Name="BtnUsers"  Style="{StaticResource BTS}" Content="Пользователи" Click="BtnUsers_Click"/>
+            <Button x:Name="BtnUsers"  Style="{StaticResource BTS}" Content="Пользователи" Click="BtnUsers_Click" Visibility="Collapsed"/>
+            <Button x:Name="BtnProfile"  Style="{StaticResource BTS}" Content="Профиль" Click="BtnProfile_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Right">
             <Button x:Name="BtnExit"  Style="{StaticResource BTS}" Content="Выход" Click="BtnExit_Click"/>
