@@ -14,7 +14,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Background="Black" Grid.Row="0" Height="50">
+        <StackPanel Background="Black" Grid.Row="0" Height="auto">
             <TextBlock Text="Dead By Daylight Wiki" HorizontalAlignment="Center" FontSize="30" Foreground="White" FontFamily="Raleway Light"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Background="Black" >

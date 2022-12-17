@@ -28,6 +28,10 @@
             <TextBox x:Name="TbLogin" IsEnabled="False"/>
             <TextBlock Text="Пароль" Foreground="White"/>
             <TextBox x:Name="TbPassword"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Роль:" Foreground="White"/>
+                <TextBlock x:Name="TbRole" Foreground="White"/>
+            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="40">
             <Border CornerRadius="150" Width="200" Height="200" Margin="0 0 0 40">

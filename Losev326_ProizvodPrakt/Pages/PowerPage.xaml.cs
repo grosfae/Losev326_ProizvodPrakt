@@ -72,7 +72,7 @@ namespace Losev326_ProizvodPrakt.Pages
             }
             else
             {
-                LvPowers.ItemsSource = App.DB.Power.Where(a => a.Name.ToLower().Contains(TbSearch.Text.ToLower())).ToList();
+                LvPowers.ItemsSource = App.DB.Power.Where(a => a.Name.ToLower().Contains(TbSearch.Text.ToLower()) || a.Character.Name.ToLower().StartsWith(TbSearch.Text.ToLower())).ToList();
             }
         }
 

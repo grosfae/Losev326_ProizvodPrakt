@@ -30,6 +30,7 @@ namespace Losev326_ProizvodPrakt.Pages
             TbNickname.Text = App.LoggedUser.Nickname;
             TbLogin.Text = App.LoggedUser.Login;
             TbPassword.Text = App.LoggedUser.Password;
+            TbRole.Text = App.LoggedUser.Role.Name;
 
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
