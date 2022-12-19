@@ -290,6 +290,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Komi.ttf" />
     <Resource Include="Resources\Raleway-Light.ttf" />
     <Resource Include="Resources\Museo Cyrl 500.otf" />
   </ItemGroup>
