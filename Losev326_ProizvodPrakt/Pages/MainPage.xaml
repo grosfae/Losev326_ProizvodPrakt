@@ -28,6 +28,6 @@
         <StackPanel Grid.Row="1" HorizontalAlignment="Right">
             <Button x:Name="BtnExit"  Style="{StaticResource BTS}" Content="Выход" Click="BtnExit_Click"/>
         </StackPanel>
-        <Frame x:Name="MenuFrame" NavigationUIVisibility="Hidden" Grid.Row="2"/>
+        <Frame x:Name="MenuFrame" NavigationUIVisibility="Hidden" Grid.Row="2"  Background="#FF3C3C3C"/>
     </Grid>
 </Page>
