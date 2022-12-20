@@ -25,7 +25,7 @@ namespace Losev326_ProizvodPrakt
         public UsersPage()
         {
             InitializeComponent();
-            LvUsers.ItemsSource = App.DB.User.ToList();
+            LvUsers.ItemsSource = App.DB.User.Where(x => x.Id != App.LoggedUser.Id).ToList();
             CbRole.ItemsSource = App.DB.Role.ToList();
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -75,7 +75,7 @@ namespace Losev326_ProizvodPrakt
             {
                 filterService = filterService.Where(x => x.Nickname.ToLower().StartsWith(TbSearch.Text.ToLower()));
             }
-            LvUsers.ItemsSource = filterService.ToList();
+            LvUsers.ItemsSource = filterService.Where(x => x.Id != App.LoggedUser.Id).ToList();
 
         }
 
