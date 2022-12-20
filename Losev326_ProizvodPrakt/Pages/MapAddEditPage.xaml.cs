@@ -83,16 +83,16 @@ namespace Losev326_ProizvodPrakt.Pages
         }
         private void AddIngBtn_Click(object sender, RoutedEventArgs e)
         {
+            contextMap = App.DB.Map.ToList().Find(x => x.Id == contextMap.Id);
+            if (contextMap == null)
+            {
+                MessageBox.Show("Перед добавлением галереи нужно создать карту");
+                return;
+            }
             MapPhoto mapPhoto = new MapPhoto();
             var dialog = new OpenFileDialog();
             if (dialog.ShowDialog().GetValueOrDefault())
             {
-                contextMap = App.DB.Map.ToList().Find(x => x.Id == contextMap.Id);
-                if (contextMap == null)
-                {
-                    MessageBox.Show("Перед добавлением галереи нужно создать карту");
-                    return;
-                }
                 mapPhoto.ImagePath = File.ReadAllBytes(dialog.FileName);
                 mapPhoto.MapId = contextMap.Id;
                 App.DB.MapPhoto.Add(mapPhoto);
