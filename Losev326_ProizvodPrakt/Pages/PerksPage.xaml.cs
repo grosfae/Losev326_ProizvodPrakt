@@ -29,6 +29,7 @@ namespace Losev326_ProizvodPrakt.Pages
                 BtnAdd.Visibility = Visibility.Visible;
                 BtnEdit.Visibility = Visibility.Visible;
                 BtnDelete.Visibility = Visibility.Visible;
+                BtnRestore.Visibility = Visibility.Visible;
             }
             LvPerks.ItemsSource = App.DB.Perk.ToList();
             CbTypePerk.ItemsSource = App.DB.TypeCharacter.ToList();
@@ -57,11 +58,22 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Выберите навык");
                 return;
             }
-            App.DB.Perk.Remove(selectedPerk);
+            selectedPerk.IsDelete = true;
             App.DB.SaveChanges();
             Refresh();
         }
-
+        private void BtnRestore_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedPerk = LvPerks.SelectedItem as Perk;
+            if (selectedPerk == null)
+            {
+                MessageBox.Show("Выберите навык");
+                return;
+            }
+            selectedPerk.IsDelete = false;
+            App.DB.SaveChanges();
+            Refresh();
+        }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Refresh();
@@ -96,6 +108,11 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Выберите навык");
                 return;
             }
+            if (selectedPerk.IsDelete == true)
+            {
+                MessageBox.Show("Статья больше неактуальна");
+                return;
+            }
             NavigationService.Navigate(new PerkViewPage(selectedPerk));
         }
 
@@ -103,5 +120,6 @@ namespace Losev326_ProizvodPrakt.Pages
         {
             Refresh();
         }
+
     }
 }

@@ -41,7 +41,6 @@
         </Style>
         <Style TargetType="ScrollBar">
             <Setter Property="Opacity" Value="0.1"/>
-
         </Style>
     </Application.Resources>
 </Application>

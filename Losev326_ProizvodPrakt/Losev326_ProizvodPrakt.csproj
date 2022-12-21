@@ -64,6 +64,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\Model\PartialClass\Character.cs" />
+    <Compile Include="Components\Model\PartialClass\Map.cs" />
+    <Compile Include="Components\Model\PartialClass\Perk.cs" />
+    <Compile Include="Components\Model\PartialClass\Power.cs" />
+    <Compile Include="Components\Model\PartialClass\User.cs" />
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>

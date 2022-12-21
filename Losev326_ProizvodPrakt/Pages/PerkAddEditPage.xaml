@@ -23,7 +23,7 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Width="400">
             <TextBlock Text="Название навыка" Foreground="White"/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBox Text="{Binding Name}"  MaxLength="50"/>
             <TextBlock Text="Описание" Foreground="White"/>
             <TextBox Text="{Binding Description}" TextWrapping="Wrap" Height="150"/>
             <TextBlock Text="Тип навыка" Foreground="White"/>

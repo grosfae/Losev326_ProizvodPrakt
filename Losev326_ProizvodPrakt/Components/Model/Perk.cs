@@ -21,6 +21,7 @@ namespace Losev326_ProizvodPrakt.Components.Model
         public int TypePerkId { get; set; }
         public int TypeArticleId { get; set; }
         public int CharacterId { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
     
         public virtual Character Character { get; set; }
         public virtual TypeArticle TypeArticle { get; set; }

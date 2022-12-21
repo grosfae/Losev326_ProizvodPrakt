@@ -49,10 +49,10 @@ namespace Losev326_ProizvodPrakt
             var selectedUser = LvUsers.SelectedItem as User;
             if (selectedUser == null)
             {
-                MessageBox.Show("Выберите персонажа");
+                MessageBox.Show("Выберите пользователя");
                 return;
             }
-            App.DB.User.Remove(selectedUser);
+            selectedUser.IsDelete = true;
             App.DB.SaveChanges();
             Refresh();
         }
@@ -86,6 +86,19 @@ namespace Losev326_ProizvodPrakt
 
         private void CbRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Refresh();
+        }
+
+        private void BtnRestore_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedUser = LvUsers.SelectedItem as User;
+            if (selectedUser == null)
+            {
+                MessageBox.Show("Выберите пользователя");
+                return;
+            }
+            selectedUser.IsDelete = false;
+            App.DB.SaveChanges();
             Refresh();
         }
     }

@@ -23,11 +23,11 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Width="400" Margin="0 100">
             <TextBlock Text="Никнейм" Foreground="White"/>
-            <TextBox x:Name="TbNickName" Text="{Binding Nickname}"/>
+            <TextBox x:Name="TbNickName" Text="{Binding Nickname}"  MaxLength="50"/>
             <TextBlock Text="Логин" Foreground="White"/>
-            <TextBox x:Name="TbLogin" Text="{Binding Login}"/>
+            <TextBox x:Name="TbLogin" Text="{Binding Login}"  MaxLength="50"/>
             <TextBlock Text="Пароль" Foreground="White"/>
-            <TextBox Text="{Binding Password}"/>
+            <TextBox Text="{Binding Password}"  MaxLength="50"/>
             <TextBlock Text="Роль" Foreground="White"/>
             <ComboBox x:Name="CbRole" SelectedItem="{Binding Role}" DisplayMemberPath="Name"/>
         </StackPanel>

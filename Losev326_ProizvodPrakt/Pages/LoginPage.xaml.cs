@@ -42,6 +42,11 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Пароль неверный");
                 return;
             }
+            if (user.IsDelete == true)
+            {
+                MessageBox.Show("Пользователь заблокирован");
+                return;
+            }
             if (SaveCb.IsChecked == true)
             {
                 Properties.Settings.Default.Login = TbLogin.Text;

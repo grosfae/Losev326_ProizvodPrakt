@@ -23,15 +23,15 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Width="400">
             <TextBlock Text="Название способности" Foreground="White"/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBox Text="{Binding Name}"  MaxLength="50"/>
             <TextBlock Text="Описание" Foreground="White"/>
             <TextBox Text="{Binding Description}" TextWrapping="Wrap" Height="150"/>
             <TextBlock Text="Тип способности" Foreground="White"/>
             <ComboBox x:Name="CbTypePower" SelectedItem="{Binding TypePower}" DisplayMemberPath="Name"/>
             <TextBlock Text="Количество зарядов способности" Foreground="White"/>
-            <TextBox Text="{Binding Count}"/>
+            <TextBox Text="{Binding Count}"  MaxLength="100"/>
             <TextBlock Text="Расстояние способности" Foreground="White"/>
-            <TextBox Text="{Binding Range}"/>
+            <TextBox Text="{Binding Range}"  MaxLength="100"/>
             <TextBlock Text="Обладающий ею персонаж" Foreground="White"/>
             <ComboBox x:Name="CbCharacter" DisplayMemberPath="Name" SelectedItem="{Binding Character}"/>
         </StackPanel>

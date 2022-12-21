@@ -19,9 +19,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Height="35" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
-            <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13" Margin="600 0 0 0" Click="BtnAdd_Click" Visibility="Collapsed"/>
+            <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13" Margin="470 0 0 0" Click="BtnAdd_Click" Visibility="Collapsed"/>
             <Button x:Name="BtnEdit" Style="{DynamicResource BTS}" Width="100" Content="Изменить" FontSize="13" Click="BtnEdit_Click" Visibility="Collapsed"/>
             <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Удалить" FontSize="13" Click="BtnDelete_Click" Visibility="Collapsed"/>
+            <Button x:Name="BtnRestore" Style="{DynamicResource BTS}" Width="110" Content="Восстановить" FontSize="13" Click="BtnRestore_Click" Visibility="Collapsed"/>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="Black">
             <TextBlock Text="Поиск" Foreground="White"/>
@@ -38,7 +39,7 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Background="{Binding Color}">
                         <Image Source="{Binding Image}" Width="150" Height="150"/>
                         <TextBlock Text="{Binding Name}" Foreground="White"/>
                         <TextBlock Text="{Binding Character.Name, StringFormat='Владелец: {0}'}" Foreground="White"/>

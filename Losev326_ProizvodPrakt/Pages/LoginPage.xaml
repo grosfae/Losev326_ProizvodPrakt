@@ -17,9 +17,9 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Width="350" Grid.Row="1">
             <TextBlock Text="Логин" Foreground="White"></TextBlock>
-            <TextBox x:Name="TbLogin" Height="25" VerticalContentAlignment="Center"></TextBox>
+            <TextBox x:Name="TbLogin" Height="25" VerticalContentAlignment="Center"  MaxLength="50"></TextBox>
             <TextBlock Text="Пароль" Foreground="White"></TextBlock>
-            <PasswordBox x:Name="PbPassword" Height="25" VerticalContentAlignment="Center"/>
+            <PasswordBox x:Name="PbPassword" Height="25" VerticalContentAlignment="Center"  MaxLength="50"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="135">
                 <CheckBox x:Name="SaveCb" IsChecked="True" Margin="7"></CheckBox>
                 <TextBlock VerticalAlignment="Center" Foreground="White">Запомнить меня</TextBlock>

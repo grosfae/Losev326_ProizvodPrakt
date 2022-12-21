@@ -29,6 +29,7 @@ namespace Losev326_ProizvodPrakt.Pages
                 BtnAdd.Visibility = Visibility.Visible;
                 BtnEdit.Visibility = Visibility.Visible;
                 BtnDelete.Visibility = Visibility.Visible;
+                BtnRestore.Visibility = Visibility.Visible;
             }
             LvPowers.ItemsSource = App.DB.Power.ToList();
         }
@@ -55,11 +56,22 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Выберите способность");
                 return;
             }
-            App.DB.Power.Remove(selectedPower);
+            selectedPower.IsDelete = true;
             App.DB.SaveChanges();
             Refresh();
         }
-
+        private void BtnRestore_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedPower = LvPowers.SelectedItem as Power;
+            if (selectedPower == null)
+            {
+                MessageBox.Show("Выберите способность");
+                return;
+            }
+            selectedPower.IsDelete = false;
+            App.DB.SaveChanges();
+            Refresh();
+        }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Refresh();
@@ -89,7 +101,13 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Выберите способность");
                 return;
             }
+            if (selectedPower.IsDelete == true)
+            {
+                MessageBox.Show("Статья больше неактуальна");
+                return;
+            }
             NavigationService.Navigate(new PowerViewPage(selectedPower));
         }
+
     }
 }

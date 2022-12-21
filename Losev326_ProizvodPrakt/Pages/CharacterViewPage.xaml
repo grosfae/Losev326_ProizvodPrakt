@@ -34,7 +34,7 @@
                             <ListView x:Name="LvPower" d:ItemsSource="{d:SampleData ItemCount=1}" Background="Transparent" BorderBrush="Transparent">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid Width="540">
+                                        <Grid Width="540" Background="{Binding Color}">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="157*"/>
                                                 <ColumnDefinition Width="343*"/>
@@ -60,7 +60,7 @@
                             </ListView.ItemsPanel>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="0 0 20 0">
+                                    <StackPanel Margin="0 0 0 0" Background="{Binding Color}">
                                         <Image Source="{Binding Image}" Width="130" Height="130" />
                                         <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Foreground="White"/>
                                     </StackPanel>

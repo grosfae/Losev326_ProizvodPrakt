@@ -23,7 +23,7 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Width="400">
             <TextBlock Text="Имя персонажа" Foreground="White"/>
-                <TextBox Text="{Binding Name}"/>
+                <TextBox Text="{Binding Name}" MaxLength="50"/>
             <TextBlock Text="История" Foreground="White"/>
                 <TextBox Text="{Binding History}" TextWrapping="Wrap" Height="150"/>
             <TextBlock Text="Описание" Foreground="White"/>
@@ -31,7 +31,7 @@
             <TextBlock Text="Скорость передвижения" Foreground="White"/>
                 <ComboBox x:Name="CbMoveSpeed" DisplayMemberPath="Value" SelectedItem="{Binding MoveSpeed}"/>
             <TextBlock Text="Радиус террора" Foreground="White"/>
-            <TextBox Text="{Binding TerrorRadius}"/>
+            <TextBox Text="{Binding TerrorRadius}"  MaxLength="100"/>
             <TextBlock Text="Роль персонажа" Foreground="White"/>
                 <ComboBox x:Name="CbTypeCharacter" DisplayMemberPath="Name" SelectedItem="{Binding TypeCharacter}"/>
         </StackPanel>

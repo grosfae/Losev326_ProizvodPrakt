@@ -22,7 +22,7 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Width="400">
             <TextBlock Text="Название карты" Foreground="White"/>
-            <TextBox Text="{Binding Name}"/>
+            <TextBox Text="{Binding Name}"  MaxLength="50"/>
             <TextBlock Text="История" Foreground="White"/>
             <TextBox Text="{Binding History}" TextWrapping="Wrap" Height="150"/>
             <TextBlock Text="Особенности" Foreground="White"/>

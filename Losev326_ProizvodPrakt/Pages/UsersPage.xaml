@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Losev326_ProizvodPrakt"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="900"
       Loaded="Page_Loaded"
       Title="UsersPage">
 
@@ -19,9 +19,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Height="35" Grid.ColumnSpan="2" Background="Black" Orientation="Horizontal">
-            <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13" Margin="600 0 0 0" Click="BtnAdd_Click"/>
+            <Button x:Name="BtnAdd" Style="{DynamicResource BTS}" Width="100" Content="Добавить" FontSize="13" Margin="470 0 0 0" Click="BtnAdd_Click"/>
             <Button x:Name="BtnEdit" Style="{DynamicResource BTS}" Width="100" Content="Изменить" FontSize="13" Click="BtnEdit_Click"/>
-            <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Удалить" FontSize="13" Click="BtnDelete_Click"/>
+            <Button x:Name="BtnDelete" Style="{DynamicResource BTS}" Width="100" Content="Забанить" FontSize="13" Click="BtnDelete_Click"/>
+            <Button x:Name="BtnRestore" Style="{DynamicResource BTS}" Width="110" Content="Восстановить" FontSize="13" Click="BtnRestore_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="Black">
             <TextBlock Text="Поиск" Foreground="White"/>
@@ -32,7 +33,7 @@
         <ListView x:Name="LvUsers" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=8}" Background="#FF3C3C3C" BorderBrush="#FF3C3C3C">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Background="{Binding Color}">
                         <Border CornerRadius="50" Width="50" Height="50">
                             <Border.Background>
                                 <ImageBrush Stretch="Fill" ImageSource="{Binding Image}"/>

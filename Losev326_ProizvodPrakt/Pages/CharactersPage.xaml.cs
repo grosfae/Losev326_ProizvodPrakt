@@ -30,6 +30,7 @@ namespace Losev326_ProizvodPrakt.Pages
                 BtnAdd.Visibility = Visibility.Visible;
                 BtnEdit.Visibility = Visibility.Visible;
                 BtnDelete.Visibility = Visibility.Visible;
+                BtnRestore.Visibility = Visibility.Visible;
             }
             LvCharacters.ItemsSource = App.DB.Character.ToList();
             CbTypeCharacter.ItemsSource = App.DB.TypeCharacter.ToList();
@@ -59,7 +60,19 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Выберите персонажа");
                 return;
             }
-            App.DB.Character.Remove(selectedCharacter);
+            selectedCharacter.IsDelete = true;
+            App.DB.SaveChanges();
+            Refresh();
+        }
+        private void BtnRestore_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedCharacter = LvCharacters.SelectedItem as Character;
+            if (selectedCharacter == null)
+            {
+                MessageBox.Show("Выберите персонажа");
+                return;
+            }
+            selectedCharacter.IsDelete = false;
             App.DB.SaveChanges();
             Refresh();
         }
@@ -107,6 +120,11 @@ namespace Losev326_ProizvodPrakt.Pages
             if (selectedCharacter == null)
             {
                 MessageBox.Show("Выберите персонажа");
+                return;
+            }
+            if (selectedCharacter.IsDelete == true)
+            {
+                MessageBox.Show("Статья больше неактуальна");
                 return;
             }
             NavigationService.Navigate(new CharacterViewPage(selectedCharacter));

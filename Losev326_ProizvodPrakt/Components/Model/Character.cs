@@ -30,6 +30,7 @@ namespace Losev326_ProizvodPrakt.Components.Model
         public byte[] Image { get; set; }
         public int TypeCharacterId { get; set; }
         public int TypeArticleId { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
     
         public virtual MoveSpeed MoveSpeed { get; set; }
         public virtual TypeArticle TypeArticle { get; set; }

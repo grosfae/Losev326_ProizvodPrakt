@@ -29,6 +29,7 @@ namespace Losev326_ProizvodPrakt.Pages
                 BtnAdd.Visibility = Visibility.Visible;
                 BtnEdit.Visibility = Visibility.Visible;
                 BtnDelete.Visibility = Visibility.Visible;
+                BtnRestore.Visibility = Visibility.Visible;
             }
             LvMaps.ItemsSource = App.DB.Map.ToList();
         }
@@ -55,11 +56,22 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Выберите локацию");
                 return;
             }
-            App.DB.Map.Remove(selectedMap);
+            selectedMap.IsDelete = true;
             App.DB.SaveChanges();
             Refresh();
         }
-
+        private void BtnRestore_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedMap = LvMaps.SelectedItem as Map;
+            if (selectedMap == null)
+            {
+                MessageBox.Show("Выберите локацию");
+                return;
+            }
+            selectedMap.IsDelete = false;
+            App.DB.SaveChanges();
+            Refresh();
+        }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Refresh();
@@ -89,7 +101,13 @@ namespace Losev326_ProizvodPrakt.Pages
                 MessageBox.Show("Выберите локацию");
                 return;
             }
+            if (selectedMap.IsDelete == true)
+            {
+                MessageBox.Show("Статья больше неактуальна");
+                return;
+            }
             NavigationService.Navigate(new MapViewPage(selectedMap));
         }
+
     }
 }
