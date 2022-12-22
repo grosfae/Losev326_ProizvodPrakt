@@ -83,8 +83,7 @@ namespace Losev326_ProizvodPrakt.Pages
         }
         private void AddIngBtn_Click(object sender, RoutedEventArgs e)
         {
-            contextMap = App.DB.Map.ToList().Find(x => x.Id == contextMap.Id);
-            if (contextMap == null)
+            if (contextMap.Id == 0)
             {
                 MessageBox.Show("Перед добавлением галереи нужно создать карту");
                 return;

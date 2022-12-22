@@ -22,11 +22,11 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Width="400">
             <TextBlock Text="Название карты" Foreground="White"/>
-            <TextBox Text="{Binding Name}"  MaxLength="50"/>
+            <TextBox Text="{Binding Name}"  MaxLength="19"/>
             <TextBlock Text="История" Foreground="White"/>
-            <TextBox Text="{Binding History}" TextWrapping="Wrap" Height="150"/>
+            <TextBox Text="{Binding History}" TextWrapping="Wrap" Height="150" AcceptsReturn="True"/>
             <TextBlock Text="Особенности" Foreground="White"/>
-            <TextBox Text="{Binding Specials}" TextWrapping="Wrap" Height="100"/>
+            <TextBox Text="{Binding Specials}" TextWrapping="Wrap" Height="100" AcceptsReturn="True"/>
             <TextBlock Text="Галерея" Foreground="White"/>
             <StackPanel Margin="0 5 0 0">
                 <ListView x:Name="LvPhotos" Height= "150" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FF323130" >

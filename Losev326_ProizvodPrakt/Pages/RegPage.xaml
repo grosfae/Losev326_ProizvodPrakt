@@ -17,7 +17,7 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350" Grid.Row="1" Height="336">
             <TextBlock Text="Никнейм" Foreground="White"></TextBlock>
-            <TextBox x:Name="TbNickname" Height="25" VerticalContentAlignment="Center" MaxLength="50"></TextBox>
+            <TextBox x:Name="TbNickname" Height="25" VerticalContentAlignment="Center" MaxLength="15"></TextBox>
             <TextBlock Text="Логин"  Foreground="White"></TextBlock>
             <TextBox x:Name="TbLogin" Height="25" VerticalContentAlignment="Center" MaxLength="50"></TextBox>
             <TextBlock Text="Пароль"  Foreground="White"></TextBlock>

@@ -23,9 +23,9 @@
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Width="400">
             <TextBlock Text="Название навыка" Foreground="White"/>
-            <TextBox Text="{Binding Name}"  MaxLength="50"/>
+            <TextBox Text="{Binding Name}"  MaxLength="19"/>
             <TextBlock Text="Описание" Foreground="White"/>
-            <TextBox Text="{Binding Description}" TextWrapping="Wrap" Height="150"/>
+            <TextBox Text="{Binding Description}" TextWrapping="Wrap" Height="150" AcceptsReturn="True"/>
             <TextBlock Text="Тип навыка" Foreground="White"/>
             <ComboBox x:Name="CbTypePerk" SelectedItem="{Binding TypePerk}" DisplayMemberPath="Name" SelectionChanged="CbTypePerk_SelectionChanged"/>
             <TextBlock Text="Обладающий навыком персонаж" Foreground="White"/>

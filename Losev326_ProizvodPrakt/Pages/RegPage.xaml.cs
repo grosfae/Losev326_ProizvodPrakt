@@ -56,7 +56,7 @@ namespace Losev326_ProizvodPrakt.Pages
                                 RoleId = 3
                             });
                             App.DB.SaveChanges();
-                            NavigationService.GoBack();
+                            NavigationService.Navigate(new LoginPage());
                         }
                     
                 }
